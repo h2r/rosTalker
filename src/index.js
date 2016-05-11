@@ -4,8 +4,10 @@ var KEY_CURRENT_PHONE = "phone";
 var KEY_CURRENT_MESSAGE = "message";
 
 var APP_ID = 'amzn1.echo-sdk-ams.app.82475233-31d2-47d0-8d70-70e18e994e44';
+
 var AlexaSkill = require('./AlexaSkill');
 var ROSLIB = require('roslib')
+var sleep = require('sleep')
 
 var ros = new ROSLIB.Ros({
     url : 'ws://138.16.160.16:9090'
@@ -25,8 +27,19 @@ ros.on('close', function() {
 
 var speech = new ROSLIB.Topic({
     ros : ros,
-    name : '/speech',
+    name : '/speech_recognition',
     messageType : 'std_msgs/String' 
+});
+
+var echoSpeech = new ROSLIB.Topic({
+	ros : ros,
+	name : '/echo_speech',
+	messageType : 'std_msgs/String'
+});
+
+var echoSays = '';
+echoSpeech.subscribe(function(message) {
+	echoSays = message.data;
 });
 
 var helpText = "I can send a message to baxter";
@@ -61,7 +74,9 @@ TM.prototype.intentHandlers = {
             data : intent.slots.Message.value
         });
         speech.publish(msg);
-	response.ask('');
+        sleep.sleep(0.2);
+	    response.ask(echoSays);
+	    echoSays = '';
     },
     "AMAZON.HelpIntent": function (intent, session, response) {
         response.ask(helpText);

@@ -1,0 +1,12 @@
+MessageTypeIntent Send {Type} message
+
+NameIntent Send to {Name}
+
+PhoneIntent Send to {Phone}
+
+MessageIntent {i want a plastic bowl|Message} using LITERAL
+MessageIntent {give me the metal spoon|Message} using LITERAL
+MessageIntent {pass me the spoon|Message} using LITERAL
+MessageIntent {can i have a bowl|Message} using LITERAL
+MessageIntent {hand me the plastic spoon|Message} using LITERAL
+MessageIntent {give me that|Message} using LITERAL

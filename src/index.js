@@ -74,9 +74,9 @@ TM.prototype.intentHandlers = {
             data : intent.slots.Message.value
         });
         speech.publish(msg);
-        sleep.sleep(0.2);
+        sleep.sleep(0.25);
 	    response.ask(echoSays);
-	    echoSays = '';
+	    echoSays = 'okay';
     },
     "AMAZON.HelpIntent": function (intent, session, response) {
         response.ask(helpText);

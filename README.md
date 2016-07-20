@@ -1,5 +1,5 @@
 # rosTalker
-code to send amazon echo speech to text information to a ros topic
+This code sends the speech to text output of the Amazon Echo across a ROS network on a topic.
 
 To get this running, first you need to go into ``src/index.js`` and you need to change the ``APP_ID`` variable to your own app_id, and change the ``url`` variable to the address of your websocket server.
 

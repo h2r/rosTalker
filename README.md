@@ -1,7 +1,7 @@
 # rosTalker
 code to send amazon echo speech to text information to a ros topic
 
-To get this running, you need to change the APP_ID variable to your own app_id, and change the url variable to the address of your websocket server.
+To get this running, you need to change the ``APP_ID`` variable to your own app_id, and change the ``url`` variable to the address of your websocket server.
 
 Then you'll need to install the roslibjs library with npm ``npm install roslib``.
 
